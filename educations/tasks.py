@@ -3,6 +3,7 @@ from config.celery import app
 from config.settings import EMAIL_HOST_USER
 
 from educations.models import Subscriptions, Course
+from educations.services import search_user_old_online
 
 
 @app.task
@@ -20,3 +21,7 @@ def send_email(course_id):
         EMAIL_HOST_USER,
         subscriber_list_email
     )
+
+@app.task
+def deactivate_old_active_user():
+    search_user_old_online()
