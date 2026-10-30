@@ -63,6 +63,13 @@ class CourseViewSet(ModelViewSet):
             self.permission_classes = (IsAdminUser,)
         return super().get_permissions()
 
+    def perform_update(self, serializer):
+        course = serializer.save()
+        send_email.delay(course.id)
+
+
+
+
 
 @extend_schema(tags=["Lesson"])
 @extend_schema_view(get=extend_schema(summary="Получение списка уроков."))
