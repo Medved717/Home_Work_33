@@ -21,6 +21,7 @@ from educations.serializers import (
     SubscriptionRequestSerializer,
     SubscriptionResponseSerializer,
 )
+from educations.tasks import send_email
 from users.permissions import IsModer, IsOwner
 
 
