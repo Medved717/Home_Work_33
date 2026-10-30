@@ -24,6 +24,9 @@ class Course(models.Model):
         verbose_name_plural = "Курсы"
         ordering = ("title",)
 
+    def __str__(self):
+        return self.title
+
 
 class Lesson(models.Model):
     title = models.CharField(
